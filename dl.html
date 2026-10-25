@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iPXE 网络引导 - 文件下载</title>
+<style>
+body { font-family: Consolas, monospace; background: #1e1e1e; color: #d4d4d4; margin: 40px; }
+h1 { color: #569cd6; font-size: 20px; }
+a { display: block; margin: 12px 0; padding: 10px 14px; background: #333; color: #4ec9b0; text-decoration: none; border: 1px solid #555; width: 520px; }
+a:hover { background: #444; }
+p { color: #888; font-size: 13px; }
+code { color: #dcdcaa; }
+.warn { color: #f14c4c; }
+</style>
+</head>
+<body>
+<h1>iPXE 网络引导 - 文件下载</h1>
+<p>目标保存位置：<code>X:\</code>（RAM盘）</p>
+<p>依次点击下载以下 4 个文件，全部保存到 <code>X:\</code>：</p>
+<a href="https://ipxe-boot.onrender.com/ipxe-shim.efi">1. ipxe-shim.efi (签名引导器)</a>
+<a href="https://ipxe-boot.onrender.com/ipxe-sb.efi">2. ipxe-sb.efi (签名 iPXE)</a>
+<a href="https://ipxe-boot.onrender.com/autoexec.ipxe">3. autoexec.ipxe (启动脚本)</a>
+<a href="https://ipxe-boot.onrender.com/deploy.cmd">4. deploy.cmd (一键部署脚本，最后下这个)</a>
+<p class="warn">下载完成后关闭本页，回到命令提示符执行：</p>
+<p><code>X:\deploy.cmd</code></p>
+<p>脚本会自动：重命名文件 → 挂载 ESP → 备份原引导 → 复制 iPXE 文件 → 校验。</p>
+<p>校验通过后手动输入 <code>wpeutil reboot</code> 重启进入 iPXE。</p>
+</body>
+</html>

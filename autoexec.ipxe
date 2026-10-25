@@ -1,26 +1,20 @@
 #!ipxe
 dhcp
-
-# base-url: small boot files hosted on Render static site
+# 全量走腾讯云 COS（小文件+大 wim）
 set base-url https://ipxe-boot.onrender.com
-
-# wim-url: full path to boot.wim (hosted on object storage, NOT on render)
-set wim-url https://your-cos-bucket.cos.ap-guangzhou.myqcloud.com/boot.wim
-
+set wim-url http://78.154.103.29:13656/d/lwsdn/app/boot.wim?sign=4Gr5qwjKSV0gUS6pd3QMFxi-7IsRoNQeGL1v1SCs4aQ=:0
 iseq ${platform} efi && goto uefi || goto bios
-
 :uefi
 kernel ${base-url}/boot/wimboot gui
-initrd ${base-url}/boot/boot.sdi          boot.sdi
-initrd ${base-url}/EFI/boot/bootx64.efi   bootx64.efi
+initrd ${base-url}/boot/boot.sdi         boot.sdi
+initrd ${base-url}/EFI/boot/bootx64.efi bootx64.efi
 initrd ${base-url}/EFI/Microsoft/Boot/BCD BCD
-initrd ${wim-url}                         boot.wim
+initrd ${wim-url}                        boot.wim
 boot
-
 :bios
 kernel ${base-url}/boot/wimboot gui
-initrd ${base-url}/boot/boot.sdi  boot.sdi
-initrd ${base-url}/bootmgr        bootmgr
-initrd ${base-url}/boot/bcd       BCD
-initrd ${wim-url}                 boot.wim
+initrd ${base-url}/boot/boot.sdi         boot.sdi
+initrd ${base-url}/bootmgr             bootmgr
+initrd ${base-url}/boot/bcd               BCD
+initrd ${wim-url}                        boot.wim
 boot

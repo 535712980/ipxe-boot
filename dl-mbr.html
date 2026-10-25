@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>iPXE MBR 部署 - 文件下载</title>
+<style>
+body { font-family: Consolas, monospace; background: #1e1e1e; color: #d4d4d4; margin: 40px; }
+h1 { color: #569cd6; font-size: 20px; }
+a { display: block; margin: 12px 0; padding: 10px 14px; background: #333; color: #4ec9b0; text-decoration: none; border: 1px solid #555; width: 520px; }
+a:hover { background: #444; }
+p { color: #888; font-size: 13px; }
+code { color: #dcdcaa; }
+.warn { color: #f14c4c; }
+</style>
+</head>
+<body>
+<h1>iPXE MBR 部署 - 文件下载</h1>
+<p>目标保存位置：<code>X:\</code>（RAM盘）</p>
+<p>依次点击下载以下文件，全部保存到 <code>X:\</code>：</p>
+<a href="https://ipxe-boot.onrender.com/grldr">1. grldr</a>
+<a href="https://ipxe-boot.onrender.com/menu.lst">2. menu.lst</a>
+<a href="https://ipxe-boot.onrender.com/ipxe.lkrn">3. ipxe.lkrn</a>
+<a href="https://ipxe-boot.onrender.com/grldr.mbr">4. grldr.mbr</a>
+<a href="https://ipxe-boot.onrender.com/deploy-mbr.cmd">5. deploy-mbr.cmd</a>
+<p class="warn">下载完成后关闭本页，回到命令提示符执行：</p>
+<p><code>X:\deploy-mbr.cmd</code></p>
+<p>脚本会把文件复制到 C:\，写入 grub4dos MBR，重启wpeutil reboot后进 iPXE 再拉 autoexec.ipxe。</p>
+</body>
+</html>
