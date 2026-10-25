@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: ipxe-boot
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health.txt
+    autoDeploy: false
