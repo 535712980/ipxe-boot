@@ -1,0 +1,19 @@
+#!ipxe
+dhcp
+set base-url https://ipxe-boot.onrender.com
+set wim-url https://your-cos-bucket.cos.ap-guangzhou.myqcloud.com/boot.wim
+iseq ${platform} efi && goto uefi || goto bios
+:uefi
+kernel ${base-url}/boot/wimboot gui
+initrd ${base-url}/boot/boot.sdi          boot.sdi
+initrd ${base-url}/EFI/boot/bootx64.efi   bootx64.efi
+initrd ${base-url}/EFI/Microsoft/Boot/BCD BCD
+initrd ${wim-url}                         boot.wim
+boot
+:bios
+kernel ${base-url}/boot/wimboot gui
+initrd ${base-url}/boot/boot.sdi  boot.sdi
+initrd ${base-url}/bootmgr        bootmgr
+initrd ${base-url}/boot/bcd       BCD
+initrd ${wim-url}                 boot.wim
+boot
